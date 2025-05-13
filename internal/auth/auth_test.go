@@ -23,7 +23,7 @@ func TestGetAPIKey(t *testing.T) {
 			diff := cmp.Diff(tc.want, got)
 			errIs := errors.Is(tc.err, err)
 			if diff != "" {
-				t.Fatalf(diff)
+				t.Fatal(diff)
 			}
 			if !errIs {
 				t.Error(err)

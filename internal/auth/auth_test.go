@@ -1,21 +1,20 @@
 package auth
 
 import (
-	"testing"
-	"net/http"
-	"github.com/google/go-cmp/cmp"
 	"errors"
+	"github.com/google/go-cmp/cmp"
+	"net/http"
+	"testing"
 )
-
 
 func TestGetAPIKey(t *testing.T) {
 	tests := map[string]struct {
 		headers http.Header
-		want string
-		err error
+		want    string
+		err     error
 	}{
-		"simple": {headers: http.Header{"Authorization": {"ApiKey key"}}, want: "key", err: nil},
-		"errorNoAuth": {headers: http.Header{"Auth": {"Key key"}}, want: "", err: ErrNoAuthHeaderIncluded },
+		"simple":      {headers: http.Header{"Authorization": {"ApiKey key"}}, want: "key", err: nil},
+		"errorNoAuth": {headers: http.Header{"Auth": {"Key key"}}, want: "", err: ErrNoAuthHeaderIncluded},
 	}
 
 	for name, tc := range tests {
